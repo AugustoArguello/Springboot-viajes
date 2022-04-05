@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: viajes-vuelos
+        uri: lb://viajes-vuelos
+        predicates:
+          - Path=/api/vuelos/**
+        filters:
+          - StripPrefix=2
+      - id: viajes-hoteles
+        uri: lb://viajes-hoteles
+        predicates:
+          - Path=/api/hoteles/**
+        filters:
+          - StripPrefix=2
+        
